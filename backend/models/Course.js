@@ -35,12 +35,6 @@ instructor:{
     required:true
 },
 
-lessons:[
-    {
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Lesson"
-    }
-],
 
 rating:{
     type:Number,
