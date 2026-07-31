@@ -1,4 +1,5 @@
 import Button from "../common/Button";
+import Card from "../common/Card";
 
 function CourseCard({
   title,
@@ -9,8 +10,8 @@ function CourseCard({
   image,
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border bg-white shadow transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <img
+    <Card className="hover:shadow-lg transition overflow-hidden">
+       <img
         src={image}
         alt={title}
         className="h-48 w-full object-cover"
@@ -38,7 +39,7 @@ function CourseCard({
           <Button>Enroll</Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
