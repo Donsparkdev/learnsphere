@@ -1,46 +1,62 @@
+import Container from "../layout/Container";
+import SectionTitle from "../common/SectionTitle";
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "Frontend Developer",
+    message:
+      "LearnSphere helped me land my first developer job. The courses were practical and easy to follow.",
+  },
+  {
+    id: 2,
+    name: "Michael Brown",
+    role: "UI/UX Designer",
+    message:
+      "The instructors explain concepts clearly. I highly recommend LearnSphere to anyone learning tech.",
+  },
+  {
+    id: 3,
+    name: "Emily Davis",
+    role: "Data Analyst",
+    message:
+      "Amazing platform with excellent content. I improved my skills and got promoted.",
+  },
+];
+
 function Testimonials() {
-  const testimonials = [
-    {
-      name: "Alice Johnson",
-      role: "Frontend Developer",
-      review:
-        "LearnSphere completely transformed my career. The courses are practical and engaging.",
-    },
-    {
-      name: "Michael Lee",
-      role: "Student",
-      review:
-        "The instructors explain concepts clearly, and I love learning at my own pace.",
-    },
-    {
-      name: "Sophia Brown",
-      role: "UI Designer",
-      review:
-        "A fantastic platform with excellent course quality and a beautiful learning experience.",
-    },
-  ];
-
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="mb-12 text-center text-4xl font-bold">
-        What Our Students Say
-      </h2>
+    <section className="py-20">
+      <Container>
+        <SectionTitle
+          title="What Our Students Say"
+          subtitle="Success stories from learners around the world."
+        />
 
-      <div className="grid gap-8 md:grid-cols-3">
-        {testimonials.map((item) => (
-          <div
-            key={item.name}
-            className="rounded-xl border p-6 shadow transition hover:shadow-lg"
-          >
-            <p className="text-gray-600 italic">"{item.review}"</p>
+        <div className="grid gap-8 md:grid-cols-3">
+          {testimonials.map((item) => (
+            <div
+              key={item.id}
+              className="rounded-xl border bg-white p-6 shadow-sm"
+            >
+              <p className="text-gray-600 italic">
+                "{item.message}"
+              </p>
 
-            <div className="mt-6">
-              <h3 className="font-semibold">{item.name}</h3>
-              <p className="text-sm text-gray-500">{item.role}</p>
+              <div className="mt-6">
+                <h3 className="font-semibold">
+                  {item.name}
+                </h3>
+
+                <p className="text-sm text-gray-500">
+                  {item.role}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }

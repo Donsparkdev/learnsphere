@@ -1,26 +1,37 @@
+import Button from "../common/Button";
+import Container from "../layout/Container";
+
 function Hero() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24 text-center">
+    <section className="bg-gray-50 py-24">
+      <Container>
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-5xl font-bold leading-tight">
+            Learn Without Limits
+          </h1>
 
-      <h1 className="text-6xl font-extrabold leading-tight">
-        Learn <span className="text-blue-600">Without Limits</span>
-      </h1>
+          <p className="mt-6 text-lg text-gray-600">
+            Learn from industry experts and advance your career with
+            world-class online courses.
+          </p>
 
-      <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-        Join thousands of learners mastering web development,
-        AI, cybersecurity, business and more.
-      </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <input
+              type="text"
+              placeholder="Search for courses..."
+              className="rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+            />
 
-      <div className="mt-10 flex justify-center gap-5">
-        <button className="rounded-lg bg-blue-600 px-8 py-4 text-white">
-          Explore Courses
-        </button>
+            <Button>Search</Button>
+          </div>
 
-        <button className="rounded-lg border px-8 py-4">
-          Become an Instructor
-        </button>
-      </div>
-
+          <div className="mt-8 flex justify-center gap-8 text-sm text-gray-500">
+            <span>📚 500+ Courses</span>
+            <span>👨‍🎓 20k+ Students</span>
+            <span>⭐ 4.9 Rating</span>
+          </div>
+        </div>
+      </Container>
     </section>
   );
 }

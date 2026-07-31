@@ -1,50 +1,59 @@
+import Container from "../layout/Container";
+import SectionTitle from "../common/SectionTitle";
+import Button from "../common/Button";
+import CourseCard from "../course/CourseCard";
+
+import reactImg from "../../assets/react-course.jpg";
+import nodeImg from "../../assets/node-course.jpg";
+import uiImg from "../../assets/uiux-course.jpg";
+
 function FeaturedCourses() {
   const courses = [
     {
-      id: 1,
-      title: "React for Beginners",
-      instructor: "John Doe",
-    },
-    {
-      id: 2,
-      title: "Node.js & Express",
-      instructor: "Jane Smith",
-    },
-    {
-      id: 3,
-      title: "UI/UX Design",
-      instructor: "Sarah Johnson",
-    },
-  ];
+    id: 1,
+    title: "React for Beginners",
+    instructor: "John Doe",
+    rating: 4.8,
+    students: 1200,
+    price: 49,
+    image: reactImg,
+  },
+  {
+    id: 2,
+    title: "Node.js & Express",
+    instructor: "Jane Smith",
+    rating: 4.9,
+    students: 980,
+    price: 59,
+    image: nodeImg,
+  },
+  {
+    id: 3,
+    title: "UI/UX Design",
+    instructor: "Sarah Johnson",
+    rating: 4.7,
+    students: 860,
+    price: 39,
+    image: uiImg,
+  },
+];
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="mb-10 text-center text-4xl font-bold">
-        Featured Courses
-      </h2>
+    <section className="py-20">
+	<Container>
+      <SectionTitle
+  title="Featured Courses"
+  subtitle="Discover our most popular courses."/>
 
       <div className="grid gap-8 md:grid-cols-3">
-        {courses.map((course) => (
-          <div
-            key={course.id}
-            className="rounded-xl border p-6 shadow transition hover:shadow-lg"
-          >
-            <div className="mb-4 h-40 rounded-lg bg-gray-200"></div>
-
-            <h3 className="text-xl font-semibold">
-              {course.title}
-            </h3>
-
-            <p className="mt-2 text-gray-600">
-              {course.instructor}
-            </p>
-
-            <button className="mt-6 rounded-lg bg-blue-600 px-5 py-2 text-white">
-              View Course
-            </button>
-          </div>
-        ))}
-      </div>
+  {courses.map((course) => (
+    <CourseCard
+      key={course.id}
+      {...course}
+    />
+  ))}
+</div>
+	</Container>
     </section>
   );
 }

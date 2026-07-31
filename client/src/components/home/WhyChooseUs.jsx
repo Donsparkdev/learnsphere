@@ -1,3 +1,7 @@
+import Container from "../layout/Container";
+import SectionTitle from "../common/SectionTitle";
+import Button from "../common/Button";
+
 function WhyChooseUs() {
   const features = [
     {
@@ -19,11 +23,12 @@ function WhyChooseUs() {
   ];
 
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="py-20">
+	<Container>
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="mb-12 text-center text-4xl font-bold">
-          Why Choose LearnSphere?
-        </h2>
+        <SectionTitle
+  title="Why Choose LearnSphere"
+  />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
@@ -41,7 +46,9 @@ function WhyChooseUs() {
             </div>
           ))}
         </div>
+
       </div>
+	</Container>
     </section>
   );
 }

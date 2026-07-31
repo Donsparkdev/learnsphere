@@ -1,34 +1,24 @@
 import { Link } from "react-router-dom";
+import Button from "./common/Button";
 
 function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-8 py-5 shadow-md">
-      <Link
-        to="/"
-        className="text-2xl font-bold text-blue-600"
-      >
-        LearnSphere
-      </Link>
-
-      <div className="flex gap-8">
-        <Link to="/">Home</Link>
-        <Link to="/courses">Courses</Link>
-      </div>
-
-      <div className="flex gap-4">
+    <nav className="border-b bg-white shadow-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
-          to="/login"
-          className="rounded-lg border px-5 py-2"
+          to="/"
+          className="text-2xl font-bold text-blue-600"
         >
-          Login
+          LearnSphere
         </Link>
 
-        <Link
-          to="/register"
-          className="rounded-lg bg-blue-600 px-5 py-2 text-white"
-        >
-          Sign Up
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link to="/">Home</Link>
+          <Link to="/courses">Courses</Link>
+          <Link to="/login">Login</Link>
+
+          <Button>Register</Button>
+        </div>
       </div>
     </nav>
   );
