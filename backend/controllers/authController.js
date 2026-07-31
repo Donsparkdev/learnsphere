@@ -42,10 +42,14 @@ password:hashedPassword
 });
 
 
-res.status(201)
-.json({
-message:"Account created",
-user
+res.status(201).json({
+  message: "Account created",
+  user: {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+   role: user.role
+    }
 });
 
 
@@ -64,15 +68,15 @@ message:error.message
 exports.login = async(req,res)=>{
 
 
+try{
+
 const {
 email,
 password
 }=req.body;
 
 
-const user =
-await User.findOne({email});
-
+const user = await User.findOne({ email }).select("+password");
 
 if(!user){
 return res.status(404)
@@ -120,10 +124,13 @@ token,
 user:{
 id:user._id,
 name:user.name,
-role:user.role
-}
-
+role: user.role
+ }
 });
 
-
+} catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
