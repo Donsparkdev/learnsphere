@@ -2,10 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AuthForm from "../../components/auth/AuthForm";
-import { login } from "../../services/authService";
+import { login as loginUser} from "../../services/authService";
+
+import useAuth from "../../hooks/useAuth";
 
 function Login() {
   const navigate = useNavigate();
+
+const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -35,30 +39,30 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const res = await login(formData);
+  console.log("Submitting...", formData);
 
-      // Save JWT
-      localStorage.setItem("token", res.data.token);
+  try {
+    const res = await loginUser(formData);
 
-      // Optional: Save user
-      localStorage.setItem(
-        "user",
-        JSON.stringify(res.data.user)
-      );
+    console.log("Response:", res.data);
 
-      alert("Login successful!");
+    login(res.data.token, res.data.user);
 
-      navigate("/dashboard");
-    } catch (error) {
-      alert(
-        error.response?.data?.message ||
-        "Login failed"
-      );
-    }
-  };
+    console.log("Context updated");
+
+    alert("Login successful!");
+
+    navigate("/dashboard");
+  } catch (error) {
+    console.log("Full error:", error);
+    console.log("Response:", error.response);
+    console.log("Data:", error.response?.data);
+
+    alert(error.response?.data?.message || error.message);
+  }
+};
 
   return (
     <AuthForm

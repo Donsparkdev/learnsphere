@@ -25,7 +25,10 @@ function AppRouter() {
         </Route>
 
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+  path="/dashboard"
+  element={<h1>Dashboard Works!</h1>}
+/>
         </Route>
       </Routes>
     </BrowserRouter>
