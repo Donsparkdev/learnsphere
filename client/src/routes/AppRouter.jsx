@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import ProtectedRoute from "../features/auth/ProtectedRoute";
+
 import MainLayout from "../layouts/MainLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 
@@ -25,9 +27,14 @@ function AppRouter() {
         </Route>
 
         <Route element={<DashboardLayout />}>
-          <Route
+          
+  <Route
   path="/dashboard"
-  element={<h1>Dashboard Works!</h1>}
+  element={
+    <ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>
+  }
 />
         </Route>
       </Routes>
